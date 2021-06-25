@@ -38,9 +38,7 @@ CLASS lcl IMPLEMENTATION.
                      LET search_string = tier(3) IN
                    FOR occ = 1 WHILE occ <= count( val = p_order sub = search_string case = abap_false )
                      LET offset = find( val = p_order sub = search_string case = abap_false occ = occ ) IN
-                   NEXT result = COND #(
-                                   WHEN offset = -1 THEN result
-                                   ELSE VALUE #( BASE result ( offset = offset tier = tier ) ) ) ).
+                   NEXT result = VALUE #( BASE result ( offset = offset tier = tier ) ) ).
 
     SORT rt_results BY offset.
 
