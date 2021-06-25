@@ -35,9 +35,9 @@ CLASS lcl IMPLEMENTATION.
     rt_results = REDUCE #(
                    INIT result = VALUE tt_results(  )
                    FOR tier IN mt_tiere
-                   FOR occ = 1 WHILE occ <= count( val = p_order sub = tier(3) case = abap_false )
-                   LET offset = find( val = p_order sub = tier(3) case = abap_false occ = occ )
-                   IN
+                     LET search_string = tier(3) IN
+                   FOR occ = 1 WHILE occ <= count( val = p_order sub = search_string case = abap_false )
+                     LET offset = find( val = p_order sub = search_string case = abap_false occ = occ ) IN
                    NEXT result = COND #(
                                    WHEN offset = -1 THEN result
                                    ELSE VALUE #( BASE result ( offset = offset tier = tier ) ) ) ).
